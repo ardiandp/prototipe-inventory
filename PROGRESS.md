@@ -3,8 +3,8 @@
 ## Status Umum
 
 - Proyek: Inventory Prototype (`PORTO/inventory`)
-- Status implementasi: Task T5 Selesai
-- Current task: T5 — Master Data Barang & Kategori
+- Status implementasi: Task T6 Selesai
+- Current task: T6 — Master Data Gudang, Rak & Supplier
 - Acuan Desain: AdminLTE-4 (`public/theme/AdminLTE-4`, Bootstrap 5.3)
 - Aturan pelaksanaan:
   - Kerjakan satu task per giliran secara berurutan.
@@ -23,7 +23,7 @@
 - [x] T3 — Dataset Mock Terpusat | Commit: `7dd9b66` | Catatan: Pembuatan `MockDataStore` (32 SKU barang realistis, 5 kategori, 3 gudang logistik, 5 vendor supplier, 15 riwayat transaksi mutasi, sesi opname, data chart mingguan, dan integrasi dinamis KPI dashboard).
 - [x] T4 — Dashboard Inventaris Lengkap | Commit: `5eb2689` | Catatan: Implementasi 4 KPI stat cards, grafik tren mutasi mingguan (Inbound vs Outbound), grafik donat distribusi kategori Chart.js, tabel peringatan stok kritis dengan tombol quick reorder, visualisasi kapasitas 3 gudang, dan log transaksi mutasi terkini.
 - [x] T5 — Master Data Barang & Kategori | Commit: `1d510fe` | Catatan: Implementasi halaman katalog master barang (`/master/barang`), live search instan, filter multi-dimensi per kategori & status stok, modal detail spesifikasi lengkap, modal form tambah/edit barang simulasi, dan tombol ekspor data.
-- [ ] T6 — Master Data Gudang, Rak & Supplier | Commit: — | Catatan: Manajemen zonasi lokasi gudang, kapasitas rak, dan direktori supplier.
+- [x] T6 — Master Data Gudang, Rak & Supplier | Commit: `944605d` | Catatan: Manajemen zonasi lokasi gudang (/master/lokasi), visualisasi kapasitas terpakai, zonasi rak terperinci, direktori mitra supplier (/master/supplier), modal profil vendor, serta modal interaktif penambahan gudang & supplier.
 - [ ] T7 — Penerimaan Barang (Inbound Goods Receipt) | Commit: — | Catatan: List GR, form terima barang dari vendor, preview cetak bukti penerimaan.
 - [ ] T8 — Pengeluaran & Transfer Stok (Outbound & Stock Transfer) | Commit: — | Catatan: Pengeluaran barang DO dummy, alur transfer antar gudang/rak.
 - [ ] T9 — Stock Opname & Penyesuaian Selisih | Commit: — | Catatan: Log opname fisik, form input selisih hitung, alur persetujuan selisih.

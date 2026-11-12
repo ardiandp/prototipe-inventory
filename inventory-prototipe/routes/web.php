@@ -29,6 +29,21 @@ Route::get('/master/barang', function () {
     return view('master.barang.index', compact('items', 'categories', 'warehouses'));
 });
 
+// Master Data: Lokasi Gudang & Rak
+Route::get('/master/lokasi', function () {
+    $warehouses = MockDataStore::getWarehouses();
+    $items = MockDataStore::getItems();
+
+    return view('master.lokasi.index', compact('warehouses', 'items'));
+});
+
+// Master Data: Vendor & Supplier
+Route::get('/master/supplier', function () {
+    $suppliers = MockDataStore::getSuppliers();
+
+    return view('master.supplier.index', compact('suppliers'));
+});
+
 // Role Switcher Route
 Route::get('/switch-role/{role}', function (string $role) {
     if (array_key_exists($role, RoleManager::ROLES)) {
