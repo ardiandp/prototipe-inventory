@@ -92,6 +92,15 @@ Route::get('/laporan/mutasi', function () {
     return view('laporan.mutasi.index', compact('report', 'categories', 'warehouses'));
 });
 
+// Pengaturan & Konfigurasi Prototipe
+Route::get('/pengaturan', function () {
+    $roles = RoleManager::all();
+    $currentRole = RoleManager::getCurrentRole();
+    $stats = MockDataStore::getSummaryStats();
+
+    return view('pengaturan.index', compact('roles', 'currentRole', 'stats'));
+});
+
 // Role Switcher Route
 Route::get('/switch-role/{role}', function (string $role) {
     if (array_key_exists($role, RoleManager::ROLES)) {
