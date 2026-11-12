@@ -1542,4 +1542,190 @@ class MockDataStore
             ]
         ];
     }
+
+    /**
+     * Dapatkan Kartu Stok Kronologis per SKU
+     */
+    public static function getStockCard(?string $sku = null): array
+    {
+        $items = self::getItems();
+        $targetItem = null;
+
+        if ($sku) {
+            foreach ($items as $itm) {
+                if ($itm['sku'] === $sku) {
+                    $targetItem = $itm;
+                    break;
+                }
+            }
+        }
+
+        if (!$targetItem) {
+            $targetItem = $items[0]; // Default: SKU-RAW-001
+        }
+
+        $currentStock = $targetItem['current_stock'];
+        
+        // Ledger kronologis pergerakan stok
+        $entries = [
+            [
+                'date' => '2026-11-01 08:00',
+                'ref_no' => 'SALDO-AWAL',
+                'type' => 'opening',
+                'type_label' => 'Saldo Awal Bulan',
+                'badge' => 'secondary',
+                'party' => 'Sistem Stok Awal November',
+                'in_qty' => 0,
+                'out_qty' => 0,
+                'balance' => max(5, $currentStock - 15),
+                'notes' => 'Rollover saldo bulan Oktober 2026',
+                'operator' => 'System'
+            ],
+            [
+                'date' => '2026-11-04 10:15',
+                'ref_no' => 'DO-2026-072',
+                'type' => 'outbound',
+                'type_label' => 'Pengeluaran (DO)',
+                'badge' => 'warning',
+                'party' => 'Divisi Produksi Pabrik',
+                'in_qty' => 0,
+                'out_qty' => 8,
+                'balance' => max(5, $currentStock - 15) - 8,
+                'notes' => 'Permintaan material rutin lini perakitan',
+                'operator' => 'Joko Prasetyo'
+            ],
+            [
+                'date' => '2026-11-07 13:40',
+                'ref_no' => 'GR-2026-001',
+                'type' => 'inbound',
+                'type_label' => 'Penerimaan (GR)',
+                'badge' => 'success',
+                'party' => 'PT Mitra Logam Presisi',
+                'in_qty' => 20,
+                'out_qty' => 0,
+                'balance' => max(5, $currentStock - 15) - 8 + 20,
+                'notes' => 'Penerimaan PO reguler vendor',
+                'operator' => 'Joko Prasetyo'
+            ],
+            [
+                'date' => '2026-11-09 15:00',
+                'ref_no' => 'TF-2026-018',
+                'type' => 'transfer',
+                'type_label' => 'Transfer Gudang',
+                'badge' => 'info',
+                'party' => 'Gudang Utama -> Transit Karawang',
+                'in_qty' => 0,
+                'out_qty' => 5,
+                'balance' => max(5, $currentStock - 15) - 8 + 20 - 5,
+                'notes' => 'Buffer staging Karawang',
+                'operator' => 'Budi Santoso'
+            ],
+            [
+                'date' => '2026-11-12 11:30',
+                'ref_no' => 'DO-2026-081',
+                'type' => 'outbound',
+                'type_label' => 'Pengeluaran (DO)',
+                'badge' => 'warning',
+                'party' => 'Divisi CNC Machining',
+                'in_qty' => 0,
+                'out_qty' => 10,
+                'balance' => max(5, $currentStock - 15) - 8 + 20 - 5 - 10,
+                'notes' => 'Surat jalan pemenuhan order',
+                'operator' => 'Joko Prasetyo'
+            ],
+            [
+                'date' => '2026-11-12 14:20',
+                'ref_no' => 'GR-2026-004',
+                'type' => 'inbound',
+                'type_label' => 'Penerimaan (GR)',
+                'badge' => 'success',
+                'party' => 'Pemasok Resmi',
+                'in_qty' => max(10, $currentStock - (max(5, $currentStock - 15) - 8 + 20 - 5 - 10)),
+                'out_qty' => 0,
+                'balance' => $currentStock,
+                'notes' => 'Penerimaan barang terbaru masuk stok',
+                'operator' => 'Joko Prasetyo'
+            ]
+        ];
+
+        // Ensure ending balance equals current stock
+        $lastIdx = count($entries) - 1;
+        $entries[$lastIdx]['balance'] = $currentStock;
+
+        $totalIn = array_sum(array_column($entries, 'in_qty'));
+        $totalOut = array_sum(array_column($entries, 'out_qty'));
+
+        return [
+            'item' => $targetItem,
+            'entries' => $entries,
+            'total_in' => $totalIn,
+            'total_out' => $totalOut,
+            'opening_balance' => $entries[0]['balance'],
+            'closing_balance' => $currentStock,
+            'closing_valuation' => $currentStock * $targetItem['buy_price'],
+            'closing_valuation_formatted' => 'Rp ' . number_format($currentStock * $targetItem['buy_price'], 0, ',', '.')
+        ];
+    }
+
+    /**
+     * Dapatkan Laporan Rekapitulasi Mutasi & Valuasi Seluruh Persediaan
+     */
+    public static function getInventoryMovementReport(): array
+    {
+        $items = self::getItems();
+        $reportRows = [];
+
+        $totalValuation = 0;
+        $totalBeginningStock = 0;
+        $totalInbound = 0;
+        $totalOutbound = 0;
+        $totalEndingStock = 0;
+
+        foreach ($items as $idx => $item) {
+            $endingStock = $item['current_stock'];
+            $inbound = (int) round($endingStock * 0.35) + (($idx % 3) * 5) + 4;
+            $outbound = (int) round($endingStock * 0.25) + (($idx % 4) * 3) + 2;
+            $beginningStock = max(0, $endingStock - $inbound + $outbound);
+            $adjustment = ($idx === 2) ? -1 : (($idx === 12) ? 10 : 0); // Simulasi penyesuaian opname
+
+            $valuation = $endingStock * $item['buy_price'];
+            $totalValuation += $valuation;
+            $totalBeginningStock += $beginningStock;
+            $totalInbound += $inbound;
+            $totalOutbound += $outbound;
+            $totalEndingStock += $endingStock;
+
+            $reportRows[] = [
+                'sku' => $item['sku'],
+                'name' => $item['name'],
+                'category' => $item['category_name'],
+                'uom' => $item['uom'],
+                'warehouse' => $item['warehouse_name'],
+                'bin' => $item['bin_location'],
+                'beginning_stock' => $beginningStock,
+                'inbound_qty' => $inbound,
+                'outbound_qty' => $outbound,
+                'adjustment_qty' => $adjustment,
+                'ending_stock' => $endingStock,
+                'buy_price' => $item['buy_price'],
+                'valuation' => $valuation,
+                'valuation_formatted' => 'Rp ' . number_format($valuation, 0, ',', '.'),
+                'status' => $item['status'],
+                'status_badge' => $item['status'] === 'Aman' ? 'success' : ($item['status'] === 'Menipis' ? 'warning' : 'danger')
+            ];
+        }
+
+        return [
+            'rows' => $reportRows,
+            'summary' => [
+                'total_sku' => count($items),
+                'total_beginning_stock' => $totalBeginningStock,
+                'total_inbound' => $totalInbound,
+                'total_outbound' => $totalOutbound,
+                'total_ending_stock' => $totalEndingStock,
+                'total_valuation' => $totalValuation,
+                'total_valuation_formatted' => 'Rp ' . number_format($totalValuation, 0, ',', '.')
+            ]
+        ];
+    }
 }

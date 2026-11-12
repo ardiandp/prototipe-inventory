@@ -73,6 +73,25 @@ Route::get('/operasional/opname', function () {
     return view('operasional.opname.index', compact('sessions', 'warehouses', 'items'));
 });
 
+// Laporan: Kartu Stok Digital (Stock Card per SKU)
+Route::get('/laporan/kartu-stok', function () {
+    $selectedSku = request('sku');
+    $items = MockDataStore::getItems();
+    $card = MockDataStore::getStockCard($selectedSku);
+    $warehouses = MockDataStore::getWarehouses();
+
+    return view('laporan.kartu_stok.index', compact('card', 'items', 'warehouses'));
+});
+
+// Laporan: Rekapitulasi Mutasi & Valuasi Persediaan
+Route::get('/laporan/mutasi', function () {
+    $report = MockDataStore::getInventoryMovementReport();
+    $categories = MockDataStore::getCategories();
+    $warehouses = MockDataStore::getWarehouses();
+
+    return view('laporan.mutasi.index', compact('report', 'categories', 'warehouses'));
+});
+
 // Role Switcher Route
 Route::get('/switch-role/{role}', function (string $role) {
     if (array_key_exists($role, RoleManager::ROLES)) {
