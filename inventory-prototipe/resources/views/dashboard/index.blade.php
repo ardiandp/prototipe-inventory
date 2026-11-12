@@ -64,7 +64,7 @@
         </div>
         <div>
           <div class="text-body-secondary small fw-medium">Total SKU Barang</div>
-          <h3 class="fw-bold mb-0">128 <span class="fs-6 text-muted fw-normal">Item</span></h3>
+          <h3 class="fw-bold mb-0">{{ $inventoryStats['total_sku'] }} <span class="fs-6 text-muted fw-normal">Item</span></h3>
         </div>
       </div>
     </div>
@@ -78,7 +78,7 @@
         </div>
         <div>
           <div class="text-body-secondary small fw-medium">Total Valuasi Aset</div>
-          <h3 class="fw-bold mb-0">Rp 482.5M</h3>
+          <h3 class="fw-bold mb-0 fs-5 text-truncate" title="{{ $inventoryStats['total_valuation_formatted'] }}">{{ $inventoryStats['total_valuation_formatted'] }}</h3>
         </div>
       </div>
     </div>
@@ -92,7 +92,7 @@
         </div>
         <div>
           <div class="text-body-secondary small fw-medium">Peringatan Stok Menipis</div>
-          <h3 class="fw-bold mb-0 text-warning">6 <span class="fs-6 text-muted fw-normal">SKU</span></h3>
+          <h3 class="fw-bold mb-0 text-warning">{{ $inventoryStats['alert_count'] }} <span class="fs-6 text-muted fw-normal">SKU</span></h3>
         </div>
       </div>
     </div>
@@ -105,8 +105,8 @@
           <i class="bi bi-arrow-left-right fs-3"></i>
         </div>
         <div>
-          <div class="text-body-secondary small fw-medium">Mutasi Bulan Ini</div>
-          <h3 class="fw-bold mb-0">1,420 <span class="fs-6 text-muted fw-normal">Qty</span></h3>
+          <div class="text-body-secondary small fw-medium">Mutasi Transaksi</div>
+          <h3 class="fw-bold mb-0">{{ number_format($inventoryStats['monthly_movements']) }} <span class="fs-6 text-muted fw-normal">Qty</span></h3>
         </div>
       </div>
     </div>

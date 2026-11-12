@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $view->with('currentRole', RoleManager::getCurrentRole());
             $view->with('allRoles', RoleManager::all());
+            $view->with('inventoryStats', \App\Support\MockDataStore::getSummaryStats());
         });
     }
 }

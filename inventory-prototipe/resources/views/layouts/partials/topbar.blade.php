@@ -61,18 +61,20 @@
       <li class="nav-item dropdown">
         <a class="nav-link position-relative" data-bs-toggle="dropdown" href="#" aria-label="Notifications">
           <i class="bi bi-bell"></i>
-          <span class="position-absolute top-1 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
-            <span class="visually-hidden">Notifikasi Baru</span>
-          </span>
+          @if($inventoryStats['alert_count'] > 0)
+            <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+              {{ $inventoryStats['alert_count'] }}
+            </span>
+          @endif
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end shadow">
-          <span class="dropdown-header fw-bold">Pemberitahuan Sistem</span>
+          <span class="dropdown-header fw-bold">Pemberitahuan Sistem ({{ $inventoryStats['alert_count'] }})</span>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item d-flex align-items-center gap-2">
             <i class="bi bi-exclamation-triangle-fill text-warning"></i>
             <div>
               <div class="small fw-semibold">Peringatan Stok Menipis</div>
-              <div class="text-secondary" style="font-size: 0.75rem;">6 SKU berada di bawah batas minimum</div>
+              <div class="text-secondary" style="font-size: 0.75rem;">{{ $inventoryStats['alert_count'] }} SKU berada di bawah batas minimum</div>
             </div>
           </a>
           <div class="dropdown-divider"></div>

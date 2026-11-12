@@ -3,8 +3,8 @@
 ## Status Umum
 
 - Proyek: Inventory Prototype (`PORTO/inventory`)
-- Status implementasi: Task T2 Selesai
-- Current task: T2 — Role & Permission Engine
+- Status implementasi: Task T3 Selesai
+- Current task: T3 — Dataset Mock Terpusat
 - Acuan Desain: AdminLTE-4 (`public/theme/AdminLTE-4`, Bootstrap 5.3)
 - Aturan pelaksanaan:
   - Kerjakan satu task per giliran secara berurutan.
@@ -19,8 +19,8 @@
 - [x] T0.2 — Spesifikasi prototipe & penetapan tema AdminLTE-4 | Commit: `59e5e15` | Catatan: Pembuatan `docs/PRD_PROTOTYPE.md` dan `IMPLEMENTATION_PLAN.md` mencakup 5 peran pengguna (Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), alur modul inventaris, dan roadmap 11 task implementasi berbasis AdminLTE-4.
 - [x] T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4 | Commit: `fbe70c8` | Catatan: Integrasi aset AdminLTE-4 (CSS, JS, logo) ke view `welcome.blade.php`, pembuatan root entrypoint `index.php` untuk vhost Laragon, verifikasi HTTP 200 OK pada route `/`, dan verifikasi nol broken asset.
 - [x] T1 — App Shell AdminLTE-4 | Commit: `906e804` | Catatan: Pembuatan base layout Blade AdminLTE-4 (`layouts/app.blade.php`), Topbar responsif, Sidebar dinamis terkelompok, Header breadcrumb, Toast notification helper `window.showToast()`, dan halaman starter `/dashboard` teruji HTTP 200 OK.
-- [x] T2 — Role & Permission Engine | Commit: `12d3157` | Catatan: Implementasi `RoleManager` (5 peran: Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), route `/switch-role/{role}`, Topbar Role Switcher dropdown interaktif, adaptasi dinamis menu sidebar dengan `RoleManager::can()`, serta verifikasi matriks otorisasi HTTP 200 pada 5 peran.
-- [ ] T3 — Dataset Mock Terpusat | Commit: — | Catatan: Mock store terstruktur (30+ SKU, 5 kategori, 3 gudang, supplier, mutasi transaksi dummy).
+- [x] T2 — Role & Permission Engine | Commit: `94ebbf6` | Catatan: Implementasi `RoleManager` (5 peran: Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), route `/switch-role/{role}`, Topbar Role Switcher dropdown interaktif, adaptasi dinamis menu sidebar dengan `RoleManager::can()`, serta verifikasi matriks otorisasi HTTP 200 pada 5 peran.
+- [x] T3 — Dataset Mock Terpusat | Commit: `8168ade` | Catatan: Pembuatan `MockDataStore` (32 SKU barang realistis, 5 kategori, 3 gudang logistik, 5 vendor supplier, 15 riwayat transaksi mutasi, sesi opname, data chart mingguan, dan integrasi dinamis KPI dashboard).
 - [ ] T4 — Dashboard Inventaris Lengkap | Commit: — | Catatan: 4 KPI cards, chart tren mutasi, donat kategori, quick alerts, pending tasks.
 - [ ] T5 — Master Data Barang & Kategori | Commit: — | Catatan: Tabel interaktif, live search, filter multi-dimensi, modal detail & form mock.
 - [ ] T6 — Master Data Gudang, Rak & Supplier | Commit: — | Catatan: Manajemen zonasi lokasi gudang, kapasitas rak, dan direktori supplier.
