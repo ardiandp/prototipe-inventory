@@ -3,8 +3,8 @@
 ## Status Umum
 
 - Proyek: Inventory Prototype (`PORTO/inventory`)
-- Status implementasi: Task T3 Selesai
-- Current task: T3 — Dataset Mock Terpusat
+- Status implementasi: Task T4 Selesai
+- Current task: T4 — Dashboard Inventaris Lengkap
 - Acuan Desain: AdminLTE-4 (`public/theme/AdminLTE-4`, Bootstrap 5.3)
 - Aturan pelaksanaan:
   - Kerjakan satu task per giliran secara berurutan.
@@ -20,8 +20,8 @@
 - [x] T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4 | Commit: `fbe70c8` | Catatan: Integrasi aset AdminLTE-4 (CSS, JS, logo) ke view `welcome.blade.php`, pembuatan root entrypoint `index.php` untuk vhost Laragon, verifikasi HTTP 200 OK pada route `/`, dan verifikasi nol broken asset.
 - [x] T1 — App Shell AdminLTE-4 | Commit: `906e804` | Catatan: Pembuatan base layout Blade AdminLTE-4 (`layouts/app.blade.php`), Topbar responsif, Sidebar dinamis terkelompok, Header breadcrumb, Toast notification helper `window.showToast()`, dan halaman starter `/dashboard` teruji HTTP 200 OK.
 - [x] T2 — Role & Permission Engine | Commit: `94ebbf6` | Catatan: Implementasi `RoleManager` (5 peran: Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), route `/switch-role/{role}`, Topbar Role Switcher dropdown interaktif, adaptasi dinamis menu sidebar dengan `RoleManager::can()`, serta verifikasi matriks otorisasi HTTP 200 pada 5 peran.
-- [x] T3 — Dataset Mock Terpusat | Commit: `8168ade` | Catatan: Pembuatan `MockDataStore` (32 SKU barang realistis, 5 kategori, 3 gudang logistik, 5 vendor supplier, 15 riwayat transaksi mutasi, sesi opname, data chart mingguan, dan integrasi dinamis KPI dashboard).
-- [ ] T4 — Dashboard Inventaris Lengkap | Commit: — | Catatan: 4 KPI cards, chart tren mutasi, donat kategori, quick alerts, pending tasks.
+- [x] T3 — Dataset Mock Terpusat | Commit: `7dd9b66` | Catatan: Pembuatan `MockDataStore` (32 SKU barang realistis, 5 kategori, 3 gudang logistik, 5 vendor supplier, 15 riwayat transaksi mutasi, sesi opname, data chart mingguan, dan integrasi dinamis KPI dashboard).
+- [x] T4 — Dashboard Inventaris Lengkap | Commit: `9b75bc8` | Catatan: Implementasi 4 KPI stat cards, grafik tren mutasi mingguan (Inbound vs Outbound), grafik donat distribusi kategori Chart.js, tabel peringatan stok kritis dengan tombol quick reorder, visualisasi kapasitas 3 gudang, dan log transaksi mutasi terkini.
 - [ ] T5 — Master Data Barang & Kategori | Commit: — | Catatan: Tabel interaktif, live search, filter multi-dimensi, modal detail & form mock.
 - [ ] T6 — Master Data Gudang, Rak & Supplier | Commit: — | Catatan: Manajemen zonasi lokasi gudang, kapasitas rak, dan direktori supplier.
 - [ ] T7 — Penerimaan Barang (Inbound Goods Receipt) | Commit: — | Catatan: List GR, form terima barang dari vendor, preview cetak bukti penerimaan.
