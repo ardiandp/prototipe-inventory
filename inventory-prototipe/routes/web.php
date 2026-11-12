@@ -20,6 +20,15 @@ Route::get('/dashboard', function () {
     return view('dashboard.index', compact('stats', 'chartData', 'recentTransactions', 'lowStockItems', 'warehouses'));
 });
 
+// Master Data: Barang & SKU
+Route::get('/master/barang', function () {
+    $items = MockDataStore::getItems();
+    $categories = MockDataStore::getCategories();
+    $warehouses = MockDataStore::getWarehouses();
+
+    return view('master.barang.index', compact('items', 'categories', 'warehouses'));
+});
+
 // Role Switcher Route
 Route::get('/switch-role/{role}', function (string $role) {
     if (array_key_exists($role, RoleManager::ROLES)) {
