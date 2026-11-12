@@ -3,8 +3,8 @@
 ## Status Umum
 
 - Proyek: Inventory Prototype (`PORTO/inventory`)
-- Status implementasi: Task T0.3 Selesai
-- Current task: T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4
+- Status implementasi: Task T1 Selesai
+- Current task: T1 — App Shell AdminLTE-4
 - Acuan Desain: AdminLTE-4 (`public/theme/AdminLTE-4`, Bootstrap 5.3)
 - Aturan pelaksanaan:
   - Kerjakan satu task per giliran secara berurutan.
@@ -17,8 +17,8 @@
 
 - [x] T0.1 — Audit repository Laravel existing, environment, dependency, Git status, dan aset tema | Commit: `158211b` | Catatan: Audit lengkap PHP 8.3.28, Laravel 13.42.0, status Git, aset AdminLTE-4 vs AdminLTE 3, catatan struktur subdirektori `inventory-prototipe`, dan verifikasi ketiadaan dokumen awal.
 - [x] T0.2 — Spesifikasi prototipe & penetapan tema AdminLTE-4 | Commit: `59e5e15` | Catatan: Pembuatan `docs/PRD_PROTOTYPE.md` dan `IMPLEMENTATION_PLAN.md` mencakup 5 peran pengguna (Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), alur modul inventaris, dan roadmap 11 task implementasi berbasis AdminLTE-4.
-- [x] T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4 | Commit: `9dc4130` | Catatan: Integrasi aset AdminLTE-4 (CSS, JS, logo) ke view `welcome.blade.php`, pembuatan root entrypoint `index.php` untuk vhost Laragon, verifikasi HTTP 200 OK pada route `/`, dan verifikasi nol broken asset.
-- [ ] T1 — App Shell AdminLTE-4 | Commit: — | Catatan: Topbar, Sidebar, Breadcrumb, Color Mode (Dark/Light), dan container feedback toast.
+- [x] T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4 | Commit: `fbe70c8` | Catatan: Integrasi aset AdminLTE-4 (CSS, JS, logo) ke view `welcome.blade.php`, pembuatan root entrypoint `index.php` untuk vhost Laragon, verifikasi HTTP 200 OK pada route `/`, dan verifikasi nol broken asset.
+- [x] T1 — App Shell AdminLTE-4 | Commit: `0dad6d5` | Catatan: Pembuatan base layout Blade AdminLTE-4 (`layouts/app.blade.php`), Topbar responsif, Sidebar dinamis terkelompok, Header breadcrumb, Toast notification helper `window.showToast()`, dan halaman starter `/dashboard` teruji HTTP 200 OK.
 - [ ] T2 — Role & Permission Engine | Commit: — | Catatan: Topbar Role Switcher dinamis dan pembatasan visibilitas menu sesuai peran.
 - [ ] T3 — Dataset Mock Terpusat | Commit: — | Catatan: Mock store terstruktur (30+ SKU, 5 kategori, 3 gudang, supplier, mutasi transaksi dummy).
 - [ ] T4 — Dashboard Inventaris Lengkap | Commit: — | Catatan: 4 KPI cards, chart tren mutasi, donat kategori, quick alerts, pending tasks.
