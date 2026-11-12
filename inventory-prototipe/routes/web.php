@@ -64,6 +64,15 @@ Route::get('/operasional/outbound', function () {
     return view('operasional.outbound.index', compact('outboundOrders', 'stockTransfers', 'warehouses', 'items'));
 });
 
+// Operasional: Stock Opname & Penyesuaian Selisih (Stock Take & Variance)
+Route::get('/operasional/opname', function () {
+    $sessions = MockDataStore::getOpnameSessions();
+    $warehouses = MockDataStore::getWarehouses();
+    $items = MockDataStore::getItems();
+
+    return view('operasional.opname.index', compact('sessions', 'warehouses', 'items'));
+});
+
 // Role Switcher Route
 Route::get('/switch-role/{role}', function (string $role) {
     if (array_key_exists($role, RoleManager::ROLES)) {

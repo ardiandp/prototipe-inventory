@@ -3,8 +3,8 @@
 ## Status Umum
 
 - Proyek: Inventory Prototype (`PORTO/inventory`)
-- Status implementasi: Task T8 Selesai
-- Current task: T8 — Pengeluaran & Transfer Stok (Outbound & Stock Transfer)
+- Status implementasi: Task T9 Selesai
+- Current task: T9 — Stock Opname & Penyesuaian Selisih
 - Acuan Desain: AdminLTE-4 (`public/theme/AdminLTE-4`, Bootstrap 5.3)
 - Aturan pelaksanaan:
   - Kerjakan satu task per giliran secara berurutan.
@@ -25,7 +25,7 @@
 - [x] T5 — Master Data Barang & Kategori | Commit: `1d510fe` | Catatan: Implementasi halaman katalog master barang (`/master/barang`), live search instan, filter multi-dimensi per kategori & status stok, modal detail spesifikasi lengkap, modal form tambah/edit barang simulasi, dan tombol ekspor data.
 - [x] T6 — Master Data Gudang, Rak & Supplier | Commit: `8c23cb6` | Catatan: Manajemen zonasi lokasi gudang (/master/lokasi), visualisasi kapasitas terpakai, zonasi rak terperinci, direktori mitra supplier (/master/supplier), modal profil vendor, serta modal interaktif penambahan gudang & supplier.
 - [x] T7 — Penerimaan Barang (Inbound Goods Receipt) | Commit: `5708659` | Catatan: Implementasi modul penerimaan barang (/operasional/inbound), 4 metrik KPI ringkasan GR, live filter status & gudang, tabel riwayat Goods Receipt terperinci, modal input penerimaan barang dinamis, modal inspeksi detail item & QC, serta modal preview cetak Bukti Penerimaan Barang resmi.
-- [x] T8 — Pengeluaran & Transfer Stok (Outbound & Stock Transfer) | Commit: `f5cb4a5` | Catatan: Implementasi modul pengeluaran barang & mutasi (/operasional/outbound) dengan navigasi 2 tab (Delivery Order & Transfer Gudang), validasi kuantitas stok tersedia, modal penerbitan DO baru, modal mutasi rute multi-gudang, quick approval interaktif, serta modal preview cetak Surat Jalan & Transfer Order Slip resmi.
-- [ ] T9 — Stock Opname & Penyesuaian Selisih | Commit: — | Catatan: Log opname fisik, form input selisih hitung, alur persetujuan selisih.
+- [x] T8 — Pengeluaran & Transfer Stok (Outbound & Stock Transfer) | Commit: `c40dc0a` | Catatan: Implementasi modul pengeluaran barang & mutasi (/operasional/outbound) dengan navigasi 2 tab (Delivery Order & Transfer Gudang), validasi kuantitas stok tersedia, modal penerbitan DO baru, modal mutasi rute multi-gudang, quick approval interaktif, serta modal preview cetak Surat Jalan & Transfer Order Slip resmi.
+- [x] T9 — Stock Opname & Penyesuaian Selisih | Commit: `42aefee` | Catatan: Implementasi modul audit fisik persediaan (/operasional/opname), 4 kartu KPI opname, filter & pencarian multi-dimensi, tabel riwayat sesi audit lengkap dengan kalkulasi selisih kuantitas & nilai rupiah, modal penjadwalan audit baru, modal count sheet hitung fisik dengan live variance calculator, modal rincian hasil audit dengan alur approval adjustment, serta modal preview cetak Berita Acara Hasil Stock Opname (BAST) resmi.
 - [ ] T10 — Kartu Stok Digital & Pusat Laporan | Commit: — | Catatan: Kartu stok per SKU, filter laporan periode/gudang, simulasi ekspor Excel/PDF.
 - [ ] T11 — Cross-Role Workflow QA & Final Demo Readiness | Commit: — | Catatan: Uji 21+ route 200 OK, validasi alur 5 role, verifikasi interaktivitas.
