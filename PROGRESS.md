@@ -3,8 +3,8 @@
 ## Status Umum
 
 - Proyek: Inventory Prototype (`PORTO/inventory`)
-- Status implementasi: Task T0.2 Selesai
-- Current task: T0.2 — Penyusunan spesifikasi prototipe (PRD & Implementation Plan)
+- Status implementasi: Task T0.3 Selesai
+- Current task: T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4
 - Acuan Desain: AdminLTE-4 (`public/theme/AdminLTE-4`, Bootstrap 5.3)
 - Aturan pelaksanaan:
   - Kerjakan satu task per giliran secara berurutan.
@@ -16,8 +16,8 @@
 ## Checklist Implementasi
 
 - [x] T0.1 — Audit repository Laravel existing, environment, dependency, Git status, dan aset tema | Commit: `158211b` | Catatan: Audit lengkap PHP 8.3.28, Laravel 13.42.0, status Git, aset AdminLTE-4 vs AdminLTE 3, catatan struktur subdirektori `inventory-prototipe`, dan verifikasi ketiadaan dokumen awal.
-- [x] T0.2 — Spesifikasi prototipe & penetapan tema AdminLTE-4 | Commit: `0557ab8` | Catatan: Pembuatan `docs/PRD_PROTOTYPE.md` dan `IMPLEMENTATION_PLAN.md` mencakup 5 peran pengguna (Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), alur modul inventaris, dan roadmap 11 task implementasi berbasis AdminLTE-4.
-- [ ] T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4 | Commit: — | Catatan: Standardisasi path tema dan verifikasi routing root tanpa broken assets.
+- [x] T0.2 — Spesifikasi prototipe & penetapan tema AdminLTE-4 | Commit: `59e5e15` | Catatan: Pembuatan `docs/PRD_PROTOTYPE.md` dan `IMPLEMENTATION_PLAN.md` mencakup 5 peran pengguna (Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), alur modul inventaris, dan roadmap 11 task implementasi berbasis AdminLTE-4.
+- [x] T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4 | Commit: `9dc4130` | Catatan: Integrasi aset AdminLTE-4 (CSS, JS, logo) ke view `welcome.blade.php`, pembuatan root entrypoint `index.php` untuk vhost Laragon, verifikasi HTTP 200 OK pada route `/`, dan verifikasi nol broken asset.
 - [ ] T1 — App Shell AdminLTE-4 | Commit: — | Catatan: Topbar, Sidebar, Breadcrumb, Color Mode (Dark/Light), dan container feedback toast.
 - [ ] T2 — Role & Permission Engine | Commit: — | Catatan: Topbar Role Switcher dinamis dan pembatasan visibilitas menu sesuai peran.
 - [ ] T3 — Dataset Mock Terpusat | Commit: — | Catatan: Mock store terstruktur (30+ SKU, 5 kategori, 3 gudang, supplier, mutasi transaksi dummy).
