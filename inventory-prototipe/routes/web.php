@@ -54,6 +54,16 @@ Route::get('/operasional/inbound', function () {
     return view('operasional.inbound.index', compact('receipts', 'suppliers', 'warehouses', 'items'));
 });
 
+// Operasional: Pengeluaran & Transfer Stok (Outbound & Stock Transfer)
+Route::get('/operasional/outbound', function () {
+    $outboundOrders = MockDataStore::getOutboundOrders();
+    $stockTransfers = MockDataStore::getStockTransfers();
+    $warehouses = MockDataStore::getWarehouses();
+    $items = MockDataStore::getItems();
+
+    return view('operasional.outbound.index', compact('outboundOrders', 'stockTransfers', 'warehouses', 'items'));
+});
+
 // Role Switcher Route
 Route::get('/switch-role/{role}', function (string $role) {
     if (array_key_exists($role, RoleManager::ROLES)) {

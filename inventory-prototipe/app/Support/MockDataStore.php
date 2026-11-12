@@ -1045,4 +1045,252 @@ class MockDataStore
             ]
         ];
     }
+
+    /**
+     * Data Transaksi Pengeluaran Barang (Delivery Order / Outbound)
+     */
+    public static function getOutboundOrders(): array
+    {
+        return [
+            [
+                'id' => 'DO-2026-081',
+                'reference_no' => 'REQ-PRD-2026-092',
+                'date' => '2026-11-12 11:45',
+                'destination' => 'Divisi Produksi IoT',
+                'destination_type' => 'Internal Production',
+                'warehouse_origin' => 'Gudang Utama Logistik',
+                'operator' => 'Joko Prasetyo',
+                'driver' => 'Internal Dispatch (Agus W.)',
+                'status' => 'DELIVERED',
+                'status_label' => 'Terkirim & Selesai',
+                'status_badge' => 'success',
+                'notes' => 'Pengeluaran komponen chip untuk lini perakitan batch 44.',
+                'total_qty' => 40,
+                'items' => [
+                    [
+                        'sku' => 'SKU-ELK-001',
+                        'name' => 'Microcontroller Board ESP32 WiFi+BLE',
+                        'qty' => 40,
+                        'uom' => 'Pcs',
+                        'bin' => 'Rak B2-02',
+                        'purpose' => 'Lini Perakitan IoT'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'DO-2026-080',
+                'reference_no' => 'SO-2026-044',
+                'date' => '2026-11-10 10:20',
+                'destination' => 'PT Astra Otoparts',
+                'destination_type' => 'Customer Eksternal',
+                'warehouse_origin' => 'Gudang Utama Logistik',
+                'operator' => 'Joko Prasetyo',
+                'driver' => 'Armada Truk Logistik (B 9812 UI)',
+                'status' => 'DELIVERED',
+                'status_label' => 'Terkirim & Selesai',
+                'status_badge' => 'success',
+                'notes' => 'Pengiriman panel box otomasi ke plant Karawang.',
+                'total_qty' => 4,
+                'items' => [
+                    [
+                        'sku' => 'SKU-FNG-001',
+                        'name' => 'Panel Box Kontrol Otomasi 60x40x20cm',
+                        'qty' => 4,
+                        'uom' => 'Unit',
+                        'bin' => 'Rak B2-01',
+                        'purpose' => 'Sales Order Fulfillment'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'DO-2026-079',
+                'reference_no' => 'REQ-MFG-2026-103',
+                'date' => '2026-11-08 16:40',
+                'destination' => 'Divisi CNC Machining',
+                'destination_type' => 'Internal Production',
+                'warehouse_origin' => 'Gudang Utama Logistik',
+                'operator' => 'Joko Prasetyo',
+                'driver' => 'Internal Dispatch (Agus W.)',
+                'status' => 'DELIVERED',
+                'status_label' => 'Terkirim & Selesai',
+                'status_badge' => 'success',
+                'notes' => 'Material baku untuk pembuatan poros presisi silinder.',
+                'total_qty' => 25,
+                'items' => [
+                    [
+                        'sku' => 'SKU-RAW-002',
+                        'name' => 'Stainless Steel Rod SUS304 Dia 25mm',
+                        'qty' => 25,
+                        'uom' => 'Batang',
+                        'bin' => 'Rak A1-02',
+                        'purpose' => 'CNC Milling Silinder'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'DO-2026-082',
+                'reference_no' => 'SO-2026-049',
+                'date' => '2026-11-12 15:30',
+                'destination' => 'PT Mayora Indah Tbk',
+                'destination_type' => 'Customer Eksternal',
+                'warehouse_origin' => 'Gudang Utama Logistik',
+                'operator' => 'Joko Prasetyo',
+                'driver' => 'JNE Trucking (Resi: JTR-881920)',
+                'status' => 'SHIPPED',
+                'status_label' => 'Dalam Perjalanan (In Transit)',
+                'status_badge' => 'info',
+                'notes' => 'Conveyor belt dikirim lengkap dengan modul pengendali kecepatan.',
+                'total_qty' => 2,
+                'items' => [
+                    [
+                        'sku' => 'SKU-FNG-002',
+                        'name' => 'Conveyor Belt Mini 1500mm Motorized',
+                        'qty' => 2,
+                        'uom' => 'Unit',
+                        'bin' => 'Rak B2-01',
+                        'purpose' => 'Delivery Order Mesin'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'DO-2026-083',
+                'reference_no' => 'REQ-PRJ-2026-015',
+                'date' => '2026-11-12 17:15',
+                'destination' => 'Proyek Assembly Line Karawang',
+                'destination_type' => 'Internal Project',
+                'warehouse_origin' => 'Gudang Utama Logistik',
+                'operator' => 'Joko Prasetyo',
+                'driver' => 'Mobil Box Operasional (B 9201 CD)',
+                'status' => 'PACKING',
+                'status_label' => 'Sedang Dikemas (Packing)',
+                'status_badge' => 'warning',
+                'notes' => 'Sedang proses verifikasi packing list dan penyiapan karton pelindung.',
+                'total_qty' => 30,
+                'items' => [
+                    [
+                        'sku' => 'SKU-ELK-003',
+                        'name' => 'Power Supply 24V 10A Din-Rail Mounting',
+                        'qty' => 10,
+                        'uom' => 'Unit',
+                        'bin' => 'Rak B2-01',
+                        'purpose' => 'Instalasi Kontrol Panel'
+                    ],
+                    [
+                        'sku' => 'SKU-PKG-001',
+                        'name' => 'Karton Box Corrugated 40x30x25cm Double Wall',
+                        'qty' => 20,
+                        'uom' => 'Pcs',
+                        'bin' => 'Rak C3-01',
+                        'purpose' => 'Pelindung Pengemasan'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'DO-2026-084',
+                'reference_no' => 'SO-2026-051',
+                'date' => '2026-11-12 18:00',
+                'destination' => 'PT Kalbe Farma Tbk',
+                'destination_type' => 'Customer Eksternal',
+                'warehouse_origin' => 'Gudang Utama Logistik',
+                'operator' => 'Joko Prasetyo',
+                'driver' => 'Menunggu Penugasan Armada',
+                'status' => 'PENDING_APPROVAL',
+                'status_label' => 'Menunggu Approval Supervisor',
+                'status_badge' => 'secondary',
+                'notes' => 'Pengeluaran alat pelindung diri untuk kontrak pasokan semester.',
+                'total_qty' => 30,
+                'items' => [
+                    [
+                        'sku' => 'SKU-SFT-001',
+                        'name' => 'Helm Proyek MSA V-Gard SNI Putih',
+                        'qty' => 30,
+                        'uom' => 'Pcs',
+                        'bin' => 'Rak D4-01',
+                        'purpose' => 'Pesanan APD Industri'
+                    ]
+                ]
+            ]
+        ];
+    }
+
+    /**
+     * Data Transaksi Mutasi & Transfer Antar Gudang
+     */
+    public static function getStockTransfers(): array
+    {
+        return [
+            [
+                'id' => 'TF-2026-019',
+                'date' => '2026-11-11 16:10',
+                'from_warehouse' => 'Gudang Utama Logistik',
+                'from_bin' => 'Rak C3-01',
+                'to_warehouse' => 'Gudang Transit & Staging',
+                'to_bin' => 'Rak T2-01',
+                'sku' => 'SKU-PKG-003',
+                'item_name' => 'Bubble Wrap Heavy Duty 1.25m x 50m',
+                'qty' => 15,
+                'uom' => 'Roll',
+                'operator' => 'Budi Santoso',
+                'driver' => 'Mobil Pick-up Operasional (B 9182 ABC)',
+                'reason' => 'Pemindahan stok kemasan buffer area Karawang',
+                'status' => 'COMPLETED',
+                'status_label' => 'Selesai & Diterima di Tujuan',
+                'status_badge' => 'success'
+            ],
+            [
+                'id' => 'TF-2026-018',
+                'date' => '2026-11-09 09:30',
+                'from_warehouse' => 'Gudang Transit & Staging',
+                'from_bin' => 'Rak T1-01',
+                'to_warehouse' => 'Gudang Utama Logistik',
+                'to_bin' => 'Rak A1-02',
+                'sku' => 'SKU-RAW-004',
+                'item_name' => 'Pipa Tembaga Seamless 1/2 inch',
+                'qty' => 10,
+                'uom' => 'Roll',
+                'operator' => 'Budi Santoso',
+                'driver' => 'Truk Internal (B 9411 OP)',
+                'reason' => 'Relokasi bahan baku dari transit ke gudang sentral',
+                'status' => 'COMPLETED',
+                'status_label' => 'Selesai & Diterima di Tujuan',
+                'status_badge' => 'success'
+            ],
+            [
+                'id' => 'TF-2026-020',
+                'date' => '2026-11-12 14:00',
+                'from_warehouse' => 'Gudang Utama Logistik',
+                'from_bin' => 'Rak A1-01',
+                'to_warehouse' => 'Gudang Transit & Staging',
+                'to_bin' => 'Rak T1-02',
+                'sku' => 'SKU-RAW-001',
+                'item_name' => 'Aluminium Sheet 2.0mm x 1200 x 2400',
+                'qty' => 12,
+                'uom' => 'Lembar',
+                'operator' => 'Joko Prasetyo',
+                'driver' => 'Armada Truk Engkel (B 9021 WX)',
+                'reason' => 'Pemenuhan permintaan staging produksi Karawang',
+                'status' => 'IN_TRANSIT',
+                'status_label' => 'Dalam Perjalanan Antar Gudang',
+                'status_badge' => 'info'
+            ],
+            [
+                'id' => 'TF-2026-021',
+                'date' => '2026-11-12 16:30',
+                'from_warehouse' => 'Gudang Utama Logistik',
+                'from_bin' => 'Rak B2-02',
+                'to_warehouse' => 'Gudang Retur & Karantina QC',
+                'to_bin' => 'Rak R1-01',
+                'sku' => 'SKU-ELK-006',
+                'item_name' => 'Solid State Relay SSR-40DA 3-32VDC',
+                'qty' => 5,
+                'uom' => 'Pcs',
+                'operator' => 'Hendra Wijaya',
+                'driver' => 'Internal Handover',
+                'reason' => 'Mutasi isolasi unit reject untuk klaim vendor',
+                'status' => 'REQUESTED',
+                'status_label' => 'Permintaan Mutasi (Menunggu Persetujuan)',
+                'status_badge' => 'warning'
+            ]
+        ];
+    }
 }
