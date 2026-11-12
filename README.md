@@ -90,3 +90,4 @@ Seluruh modul dan endpoint telah diverifikasi menggunakan pengujian terotomasi:
 
 ## 📄 Lisensi
 Prototipe ini dikembangkan untuk kebutuhan portofolio dan demonstrasi sistem inventaris logistik modern. Lisensi di bawah [MIT License](LICENSE).
+

@@ -82,3 +82,4 @@ Pada environment Windows ini, biner PHP Laragon terletak di:
 ```
 Hindari memanggil perintah `php` telanjang karena PATH sistem global mungkin belum mengarah ke biner Laragon.
 Gunakan biner tersebut untuk linting (`-l`) dan menjalankan skrip verifikasi route HTTP.
+
