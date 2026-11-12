@@ -3,8 +3,9 @@
 ## Status Umum
 
 - Proyek: Inventory Prototype (`PORTO/inventory`)
-- Status implementasi: Task T0.1 Selesai
-- Current task: T0.1 — Audit repository Laravel existing & baseline setup
+- Status implementasi: Task T0.2 Selesai
+- Current task: T0.2 — Penyusunan spesifikasi prototipe (PRD & Implementation Plan)
+- Acuan Desain: AdminLTE-4 (`public/theme/AdminLTE-4`, Bootstrap 5.3)
 - Aturan pelaksanaan:
   - Kerjakan satu task per giliran secara berurutan.
   - Setiap task harus selesai, dites, dicatat di `PROGRESS.md`, lalu di-commit satu per satu.
@@ -14,4 +15,17 @@
 
 ## Checklist Implementasi
 
-- [x] T0.1 — Audit repository Laravel existing, environment, dependency, Git status, dan aset tema | Commit: c84c7f7 | Catatan: Audit lengkap PHP 8.3.28, Laravel 13.42.0, status Git, aset AdminLTE-4 vs AdminLTE 3, catatan struktur subdirektori `inventory-prototipe`, dan verifikasi ketiadaan `docs/PRD_PROTOTYPE.md`.
+- [x] T0.1 — Audit repository Laravel existing, environment, dependency, Git status, dan aset tema | Commit: `158211b` | Catatan: Audit lengkap PHP 8.3.28, Laravel 13.42.0, status Git, aset AdminLTE-4 vs AdminLTE 3, catatan struktur subdirektori `inventory-prototipe`, dan verifikasi ketiadaan dokumen awal.
+- [x] T0.2 — Spesifikasi prototipe & penetapan tema AdminLTE-4 | Commit: `0557ab8` | Catatan: Pembuatan `docs/PRD_PROTOTYPE.md` dan `IMPLEMENTATION_PLAN.md` mencakup 5 peran pengguna (Warehouse Manager, Warehouse Staff, Purchasing, Finance, Super Admin), alur modul inventaris, dan roadmap 11 task implementasi berbasis AdminLTE-4.
+- [ ] T0.3 — Penataan struktur workspace & integrasi link aset AdminLTE-4 | Commit: — | Catatan: Standardisasi path tema dan verifikasi routing root tanpa broken assets.
+- [ ] T1 — App Shell AdminLTE-4 | Commit: — | Catatan: Topbar, Sidebar, Breadcrumb, Color Mode (Dark/Light), dan container feedback toast.
+- [ ] T2 — Role & Permission Engine | Commit: — | Catatan: Topbar Role Switcher dinamis dan pembatasan visibilitas menu sesuai peran.
+- [ ] T3 — Dataset Mock Terpusat | Commit: — | Catatan: Mock store terstruktur (30+ SKU, 5 kategori, 3 gudang, supplier, mutasi transaksi dummy).
+- [ ] T4 — Dashboard Inventaris Lengkap | Commit: — | Catatan: 4 KPI cards, chart tren mutasi, donat kategori, quick alerts, pending tasks.
+- [ ] T5 — Master Data Barang & Kategori | Commit: — | Catatan: Tabel interaktif, live search, filter multi-dimensi, modal detail & form mock.
+- [ ] T6 — Master Data Gudang, Rak & Supplier | Commit: — | Catatan: Manajemen zonasi lokasi gudang, kapasitas rak, dan direktori supplier.
+- [ ] T7 — Penerimaan Barang (Inbound Goods Receipt) | Commit: — | Catatan: List GR, form terima barang dari vendor, preview cetak bukti penerimaan.
+- [ ] T8 — Pengeluaran & Transfer Stok (Outbound & Stock Transfer) | Commit: — | Catatan: Pengeluaran barang DO dummy, alur transfer antar gudang/rak.
+- [ ] T9 — Stock Opname & Penyesuaian Selisih | Commit: — | Catatan: Log opname fisik, form input selisih hitung, alur persetujuan selisih.
+- [ ] T10 — Kartu Stok Digital & Pusat Laporan | Commit: — | Catatan: Kartu stok per SKU, filter laporan periode/gudang, simulasi ekspor Excel/PDF.
+- [ ] T11 — Cross-Role Workflow QA & Final Demo Readiness | Commit: — | Catatan: Uji 21+ route 200 OK, validasi alur 5 role, verifikasi interaktivitas.
