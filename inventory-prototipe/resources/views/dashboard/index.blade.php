@@ -9,21 +9,48 @@
 @endsection
 
 @section('content')
-<!-- App Shell Verification Banner -->
-<div class="alert alert-success border-success-subtle shadow-sm d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4" role="alert">
-  <div class="d-flex align-items-center gap-2">
-    <i class="bi bi-patch-check-fill fs-4 text-success"></i>
-    <div>
-      <h6 class="alert-heading mb-0 fw-bold">Task T1 — App Shell AdminLTE-4 Berhasil Diimplementasikan!</h6>
-      <p class="mb-0 small text-success-emphasis">
-        Shell modular AdminLTE-4 (Topbar, Sidebar responsif, Header breadcrumb, Dark/Light mode, & Toast feedback) siap digunakan.
-      </p>
+<!-- Interactive Role Context Banner -->
+<div class="card border-{{ $currentRole['badge'] }}-subtle shadow-sm mb-4 bg-body">
+  <div class="card-body p-4">
+    <div class="row align-items-center g-3">
+      <div class="col-md-8 d-flex align-items-center gap-3">
+        <img src="{{ asset('theme/AdminLTE-4/dist/assets/img/' . $currentRole['avatar']) }}" alt="Avatar" class="rounded-circle shadow border border-2 border-{{ $currentRole['badge'] }}" width="64" height="64" />
+        <div>
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
+            <h5 class="fw-bold mb-0">{{ $currentRole['user_name'] }}</h5>
+            <span class="badge bg-{{ $currentRole['badge'] }} text-white">
+              <i class="bi {{ $currentRole['icon'] }} me-1"></i> {{ $currentRole['name'] }}
+            </span>
+            <span class="badge bg-success-subtle text-success border border-success-subtle">
+              <i class="bi bi-shield-check me-1"></i> Otorisasi Aktif
+            </span>
+          </div>
+          <p class="text-body-secondary small mb-0">
+            {{ $currentRole['description'] }}
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <div class="btn-group shadow-sm">
+          <button type="button" class="btn btn-outline-{{ $currentRole['badge'] }} btn-sm dropdown-toggle px-3 py-2 fw-medium" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-arrow-repeat me-1"></i> Ganti Peran (Role)
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li class="dropdown-header fw-bold">Pilih Role Simulasi:</li>
+            @foreach($allRoles as $key => $r)
+              <li>
+                <a class="dropdown-item d-flex align-items-center justify-content-between py-2 {{ $currentRole['id'] === $key ? 'active fw-bold' : '' }}" href="{{ url('/switch-role/' . $key) }}">
+                  <span><i class="bi {{ $r['icon'] }} text-{{ $r['badge'] }} me-2"></i> {{ $r['name'] }}</span>
+                  @if($currentRole['id'] === $key)
+                    <i class="bi bi-check-lg ms-2"></i>
+                  @endif
+                </a>
+              </li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="d-flex gap-2">
-    <button class="btn btn-success btn-sm px-3 shadow-sm" onclick="window.showToast('App Shell AdminLTE-4 berhasil diuji!', 'success', 'Pengujian Shell')">
-      <i class="bi bi-bell-fill me-1"></i> Uji Toast
-    </button>
   </div>
 </div>
 
@@ -86,40 +113,62 @@
   </div>
 </div>
 
-<!-- Layout Demo Card -->
+<!-- Role Permission Matrix Verification Card -->
 <div class="card border shadow-sm mb-4">
   <div class="card-header bg-body py-3 d-flex align-items-center justify-content-between">
     <h6 class="card-title fw-bold mb-0">
-      <i class="bi bi-window-sidebar me-2 text-primary"></i>Fitur App Shell Terpasang
+      <i class="bi bi-shield-lock-fill text-{{ $currentRole['badge'] }} me-2"></i>Matriks Hak Akses Modul — {{ $currentRole['name'] }}
     </h6>
-    <span class="badge bg-primary">AdminLTE 4.0 Native</span>
+    <span class="badge bg-{{ $currentRole['badge'] }}-subtle text-{{ $currentRole['badge'] }} border">T2 Engine Verified</span>
   </div>
   <div class="card-body">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="p-3 border rounded bg-body-tertiary h-100">
-          <h6 class="fw-bold"><i class="bi bi-layout-sidebar-inset text-primary me-2"></i>Sidebar & Push Menu</h6>
-          <p class="small text-body-secondary mb-0">
-            Dapat diperkecil (*collapse*) dan diperluas melalui tombol toggle di topbar. Responsif di layar tablet dan ponsel (*drawer mode*).
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-3 border rounded bg-body-tertiary h-100">
-          <h6 class="fw-bold"><i class="bi bi-circle-half text-info me-2"></i>Dark & Light Mode</h6>
-          <p class="small text-body-secondary mb-0">
-            Mendukung tema Gelap, Terang, dan Otomatis (sinkron OS) yang tersimpan permanen di <code>localStorage</code> tanpa *page reload*.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="p-3 border rounded bg-body-tertiary h-100">
-          <h6 class="fw-bold"><i class="bi bi-bell-fill text-warning me-2"></i>Toast Notification Helper</h6>
-          <p class="small text-body-secondary mb-0">
-            Fungsi global <code>window.showToast(msg, type, title)</code> siap dipanggil dari aksi interaktif di modul master data dan operasional.
-          </p>
-        </div>
-      </div>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light small">
+          <tr>
+            <th>Modul Sistem</th>
+            <th>Kategori</th>
+            <th>Hak Akses Peran Saat Ini</th>
+            <th>Catatan Kebijakan</th>
+          </tr>
+        </thead>
+        <tbody class="small">
+          @php
+            $modules = [
+              ['key' => 'dashboard', 'name' => 'Dashboard Utama', 'cat' => 'Utama', 'note' => 'Ringkasan KPI & grafik pergerakan stok'],
+              ['key' => 'master_barang', 'name' => 'Katalog Barang & SKU', 'cat' => 'Master Data', 'note' => 'Informasi spesifikasi, UOM, dan batas minimum stok'],
+              ['key' => 'master_lokasi', 'name' => 'Gudang & Rak Simpan', 'cat' => 'Master Data', 'note' => 'Pemetaan lokasi fisik dan zonasi rak'],
+              ['key' => 'master_supplier', 'name' => 'Vendor & Pemasok', 'cat' => 'Master Data', 'note' => 'Daftar vendor resmi & kontak purchasing'],
+              ['key' => 'inbound', 'name' => 'Penerimaan Barang (Inbound)', 'cat' => 'Operasional', 'note' => 'Input dan verifikasi Goods Receipt (GR)'],
+              ['key' => 'outbound', 'name' => 'Pengeluaran & Transfer', 'cat' => 'Operasional', 'note' => 'Distribusi barang dan mutasi antar gudang'],
+              ['key' => 'opname', 'name' => 'Stock Opname & Selisih', 'cat' => 'Operasional', 'note' => 'Pencatatan selisih hitung fisik & review write-off'],
+              ['key' => 'kartu_stok', 'name' => 'Kartu Stok Digital', 'cat' => 'Laporan', 'note' => 'Riwayat mutasi kronologis per-SKU'],
+              ['key' => 'laporan_mutasi', 'name' => 'Laporan Mutasi & Valuasi', 'cat' => 'Laporan', 'note' => 'Analisis total nilai persediaan & pergerakan barang'],
+              ['key' => 'pengaturan', 'name' => 'Pengaturan Prototipe', 'cat' => 'Sistem', 'note' => 'Konfigurasi master & audit trail demo'],
+            ];
+          @endphp
+
+          @foreach($modules as $mod)
+            @php $hasPerm = in_array($mod['key'], $currentRole['permissions']); @endphp
+            <tr>
+              <td class="fw-semibold">{{ $mod['name'] }}</td>
+              <td><span class="badge bg-light text-dark border">{{ $mod['cat'] }}</span></td>
+              <td>
+                @if($hasPerm)
+                  <span class="badge bg-success-subtle text-success border border-success-subtle">
+                    <i class="bi bi-check-circle-fill me-1"></i> Diizinkan (Akses Penuh)
+                  </span>
+                @else
+                  <span class="badge bg-danger-subtle text-danger border border-danger-subtle">
+                    <i class="bi bi-x-circle-fill me-1"></i> Dibatasi (Terkunci)
+                  </span>
+                @endif
+              </td>
+              <td class="text-body-secondary">{{ $mod['note'] }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

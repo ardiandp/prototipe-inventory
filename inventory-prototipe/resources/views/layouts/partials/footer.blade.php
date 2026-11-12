@@ -5,3 +5,4 @@
   </div>
   <strong>&copy; {{ date('Y') }} Inventory & Warehouse Management System.</strong> Prototipe Interaktif (Demo).
 </footer>
+
