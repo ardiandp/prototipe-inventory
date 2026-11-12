@@ -44,6 +44,16 @@ Route::get('/master/supplier', function () {
     return view('master.supplier.index', compact('suppliers'));
 });
 
+// Operasional: Penerimaan Barang (Inbound Goods Receipt)
+Route::get('/operasional/inbound', function () {
+    $receipts = MockDataStore::getInboundReceipts();
+    $suppliers = MockDataStore::getSuppliers();
+    $warehouses = MockDataStore::getWarehouses();
+    $items = MockDataStore::getItems();
+
+    return view('operasional.inbound.index', compact('receipts', 'suppliers', 'warehouses', 'items'));
+});
+
 // Role Switcher Route
 Route::get('/switch-role/{role}', function (string $role) {
     if (array_key_exists($role, RoleManager::ROLES)) {

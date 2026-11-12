@@ -774,4 +774,275 @@ class MockDataStore
             ]
         ];
     }
+
+    /**
+     * Data Transaksi Penerimaan Barang (Goods Receipt / Inbound)
+     */
+    public static function getInboundReceipts(): array
+    {
+        return [
+            [
+                'id' => 'GR-2026-004',
+                'po_number' => 'PO-2026-108',
+                'delivery_order_no' => 'SJ-MPL-8821',
+                'date' => '2026-11-12 14:20',
+                'supplier_id' => 'SPL-01',
+                'supplier_name' => 'PT Mitra Logam Presisi',
+                'warehouse_id' => 'GDG-01',
+                'warehouse_name' => 'Gudang Utama Logistik',
+                'bin_location' => 'Rak A1-01 / A1-02',
+                'receiver' => 'Joko Prasetyo',
+                'qc_inspector' => 'Hendra Wijaya',
+                'qc_status' => 'Passed QC',
+                'status' => 'COMPLETED',
+                'status_label' => 'Selesai & Masuk Stok',
+                'status_badge' => 'success',
+                'notes' => 'Penerimaan bahan baku logam sesuai sertifikat mill spec JIS G3141.',
+                'total_qty' => 50,
+                'total_valuation' => 18250000,
+                'items' => [
+                    [
+                        'sku' => 'SKU-RAW-001',
+                        'name' => 'Aluminium Sheet 2.0mm x 1200 x 2400',
+                        'qty_ordered' => 30,
+                        'qty_received' => 30,
+                        'qty_rejected' => 0,
+                        'uom' => 'Lembar',
+                        'unit_price' => 425000,
+                        'subtotal' => 12750000,
+                        'bin' => 'Rak A1-01',
+                        'condition' => 'Baik',
+                        'qc_note' => 'Ketebalan terverifikasi mikrometer 2.02mm'
+                    ],
+                    [
+                        'sku' => 'SKU-RAW-002',
+                        'name' => 'Stainless Steel Rod SUS304 Dia 25mm',
+                        'qty_ordered' => 20,
+                        'qty_received' => 20,
+                        'qty_rejected' => 0,
+                        'uom' => 'Batang',
+                        'unit_price' => 275000,
+                        'subtotal' => 5500000,
+                        'bin' => 'Rak A1-02',
+                        'condition' => 'Baik',
+                        'qc_note' => 'Diameter toleransi presisi'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'GR-2026-003',
+                'po_number' => 'PO-2026-105',
+                'delivery_order_no' => 'SJ-GST-5421',
+                'date' => '2026-11-11 13:30',
+                'supplier_id' => 'SPL-02',
+                'supplier_name' => 'PT Global Semiconductor Tech',
+                'warehouse_id' => 'GDG-01',
+                'warehouse_name' => 'Gudang Utama Logistik',
+                'bin_location' => 'Rak B2-01 / B2-02',
+                'receiver' => 'Joko Prasetyo',
+                'qc_inspector' => 'Hendra Wijaya',
+                'qc_status' => 'Passed QC',
+                'status' => 'COMPLETED',
+                'status_label' => 'Selesai & Masuk Stok',
+                'status_badge' => 'success',
+                'notes' => 'Komponen elektronik presisi dikemas moisture barrier bag anti-statis.',
+                'total_qty' => 70,
+                'total_valuation' => 10250000,
+                'items' => [
+                    [
+                        'sku' => 'SKU-ELK-003',
+                        'name' => 'Power Supply 24V 10A Din-Rail Mounting',
+                        'qty_ordered' => 20,
+                        'qty_received' => 20,
+                        'qty_rejected' => 0,
+                        'uom' => 'Unit',
+                        'unit_price' => 245000,
+                        'subtotal' => 4900000,
+                        'bin' => 'Rak B2-01',
+                        'condition' => 'Baik',
+                        'qc_note' => 'Output tegangan stabil 24.1V'
+                    ],
+                    [
+                        'sku' => 'SKU-ELK-001',
+                        'name' => 'Microcontroller Board ESP32 WiFi+BLE',
+                        'qty_ordered' => 50,
+                        'qty_received' => 50,
+                        'qty_rejected' => 0,
+                        'uom' => 'Pcs',
+                        'unit_price' => 107000,
+                        'subtotal' => 5350000,
+                        'bin' => 'Rak B2-02',
+                        'condition' => 'Baik',
+                        'qc_note' => 'Chipset flash lolos uji boot'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'GR-2026-005',
+                'po_number' => 'PO-2026-112',
+                'delivery_order_no' => 'SJ-KBI-9012',
+                'date' => '2026-11-12 16:45',
+                'supplier_id' => 'SPL-05',
+                'supplier_name' => 'PT Krakatau Baja Industri',
+                'warehouse_id' => 'GDG-02',
+                'warehouse_name' => 'Gudang Transit & Staging',
+                'bin_location' => 'Rak T1-01 / T1-02',
+                'receiver' => 'Budi Santoso',
+                'qc_inspector' => 'Hendra Wijaya',
+                'qc_status' => 'Passed QC',
+                'status' => 'INSPECTED',
+                'status_label' => 'Inspeksi Selesai (Menunggu Putaway)',
+                'status_badge' => 'primary',
+                'notes' => 'Telah lolos uji uji tarik dan sertifikat material valid, menunggu penempatan rak utama.',
+                'total_qty' => 75,
+                'total_valuation' => 15600000,
+                'items' => [
+                    [
+                        'sku' => 'SKU-RAW-005',
+                        'name' => 'Kawat Las Kuningan 2.5mm Rod AWS',
+                        'qty_ordered' => 60,
+                        'qty_received' => 60,
+                        'qty_rejected' => 0,
+                        'uom' => 'Kg',
+                        'unit_price' => 120000,
+                        'subtotal' => 7200000,
+                        'bin' => 'Rak T1-01',
+                        'condition' => 'Baik',
+                        'qc_note' => 'Berat net sesuai timbangan digital'
+                    ],
+                    [
+                        'sku' => 'SKU-RAW-003',
+                        'name' => 'Plat Baja Karbon Hitam 3.0mm',
+                        'qty_ordered' => 15,
+                        'qty_received' => 15,
+                        'qty_rejected' => 0,
+                        'uom' => 'Lembar',
+                        'unit_price' => 560000,
+                        'subtotal' => 8400000,
+                        'bin' => 'Rak T1-02',
+                        'condition' => 'Baik',
+                        'qc_note' => 'Tanpa goresan dan bebas karat'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'GR-2026-006',
+                'po_number' => 'PO-2026-114',
+                'delivery_order_no' => 'SJ-MPM-7714',
+                'date' => '2026-11-12 18:00',
+                'supplier_id' => 'SPL-03',
+                'supplier_name' => 'CV Multi Pack Mandiri',
+                'warehouse_id' => 'GDG-01',
+                'warehouse_name' => 'Gudang Utama Logistik',
+                'bin_location' => 'Rak C3-01 / C3-02',
+                'receiver' => 'Joko Prasetyo',
+                'qc_inspector' => 'Sedang Diproses',
+                'qc_status' => 'Sedang Uji Sampel',
+                'status' => 'RECEIVED',
+                'status_label' => 'Diterima (Proses QC)',
+                'status_badge' => 'warning',
+                'notes' => 'Barang diturunkan di staging bay C3, sedang diambil sampling untuk uji kekuatan karton.',
+                'total_qty' => 300,
+                'total_valuation' => 4500000,
+                'items' => [
+                    [
+                        'sku' => 'SKU-PKG-001',
+                        'name' => 'Karton Box Corrugated 40x30x25cm Double Wall',
+                        'qty_ordered' => 200,
+                        'qty_received' => 200,
+                        'qty_rejected' => 0,
+                        'uom' => 'Pcs',
+                        'unit_price' => 15000,
+                        'subtotal' => 3000000,
+                        'bin' => 'Rak C3-01',
+                        'condition' => 'Sampling QC',
+                        'qc_note' => '10 bundel diperiksa ketebalan flute B/C'
+                    ],
+                    [
+                        'sku' => 'SKU-PKG-002',
+                        'name' => 'Lakban Coklat Heavy Duty 48mm x 90m',
+                        'qty_ordered' => 100,
+                        'qty_received' => 100,
+                        'qty_rejected' => 0,
+                        'uom' => 'Roll',
+                        'unit_price' => 15000,
+                        'subtotal' => 1500000,
+                        'bin' => 'Rak C3-02',
+                        'condition' => 'Sampling QC',
+                        'qc_note' => 'Uji tensile tape normal'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'GR-2026-002',
+                'po_number' => 'PO-2026-099',
+                'delivery_order_no' => 'SJ-DSE-3319',
+                'date' => '2026-11-09 14:15',
+                'supplier_id' => 'SPL-04',
+                'supplier_name' => 'PT Delta Safety Equipment',
+                'warehouse_id' => 'GDG-01',
+                'warehouse_name' => 'Gudang Utama Logistik',
+                'bin_location' => 'Rak D4-01',
+                'receiver' => 'Joko Prasetyo',
+                'qc_inspector' => 'Hendra Wijaya',
+                'qc_status' => 'Passed QC',
+                'status' => 'COMPLETED',
+                'status_label' => 'Selesai & Masuk Stok',
+                'status_badge' => 'success',
+                'notes' => 'Perlengkapan K3 batch standard operasional Q4 telah didistribusikan ke rak.',
+                'total_qty' => 50,
+                'total_valuation' => 4750000,
+                'items' => [
+                    [
+                        'sku' => 'SKU-SFT-001',
+                        'name' => 'Helm Proyek MSA V-Gard SNI Putih',
+                        'qty_ordered' => 50,
+                        'qty_received' => 50,
+                        'qty_rejected' => 0,
+                        'uom' => 'Pcs',
+                        'unit_price' => 95000,
+                        'subtotal' => 4750000,
+                        'bin' => 'Rak D4-01',
+                        'condition' => 'Baik',
+                        'qc_note' => 'Logo sertifikasi SNI dan ANSI Z89.1 lengkap'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'GR-2026-007',
+                'po_number' => 'PO-2026-115',
+                'delivery_order_no' => 'SJ-GST-5509',
+                'date' => '2026-11-12 18:30',
+                'supplier_id' => 'SPL-02',
+                'supplier_name' => 'PT Global Semiconductor Tech',
+                'warehouse_id' => 'GDG-01',
+                'warehouse_name' => 'Gudang Utama Logistik',
+                'bin_location' => 'Rak B2-01',
+                'receiver' => 'Belum Diterima',
+                'qc_inspector' => '-',
+                'qc_status' => 'Menunggu Fisik',
+                'status' => 'DRAFT',
+                'status_label' => 'Draft (Menunggu Kedatangan Truk)',
+                'status_badge' => 'secondary',
+                'notes' => 'Manifest ASN (Advance Shipping Notice) telah diterima dari supplier via EDI/Email.',
+                'total_qty' => 200,
+                'total_valuation' => 5600000,
+                'items' => [
+                    [
+                        'sku' => 'SKU-ELK-005',
+                        'name' => 'Kabel Control Shielded 4x0.75mm',
+                        'qty_ordered' => 200,
+                        'qty_received' => 0,
+                        'qty_rejected' => 0,
+                        'uom' => 'Meter',
+                        'unit_price' => 28000,
+                        'subtotal' => 5600000,
+                        'bin' => 'Rak B2-01',
+                        'condition' => 'Pending',
+                        'qc_note' => 'Armada vendor dijadwalkan tiba malam ini'
+                    ]
+                ]
+            ]
+        ];
+    }
 }
