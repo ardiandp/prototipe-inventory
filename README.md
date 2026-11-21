@@ -1,93 +1,58 @@
-# Inventory & Warehouse Management System Prototype (AdminLTE-4 & Laravel 13)
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Prototipe interaktif *high-fidelity* untuk **Sistem Manajemen Inventaris & Pergudangan Terpadu (Warehouse Management System / WMS)** berbasis **Laravel 13** dan antarmuka modern **AdminLTE 4 (Bootstrap 5.3)**.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Prototipe ini dirancang khusus untuk demonstrasi kebutuhan bisnis, validasi alur operasional multi-peran, dan pengujian pengalaman pengguna (*UI/UX*) tanpa ketergantungan pada database fisik. Seluruh transaksi dan saldo inventaris didukung oleh arsitektur *Centralized Mock Store* yang konsisten.
+## About Laravel
 
----
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## 🌟 Fitur Utama & Modul Sistem
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-### 1. Multi-Role & Permission Engine (5 Peran Pengguna)
-Dilengkapi dengan fitur **Topbar Role Switcher** interaktif untuk berpindah peran secara instan:
-- **Warehouse Manager (`Budi Santoso`)**: Akses penuh ke seluruh modul, persetujuan mutasi, dan laporan analitik.
-- **Warehouse Staff (`Joko Prasetyo`)**: Operasional harian: pencatatan penerimaan (GR), pengeluaran (DO), transfer, dan hitung fisik opname.
-- **Purchasing / Buyer (`Siti Rahma`)**: Pemantauan stok menipis, pengadaan ulang (*quick reorder*), direktori vendor, dan riwayat penerimaan.
-- **Finance / Auditor (`Hendra Wijaya`)**: Audit persediaan fisik, evaluasi selisih (*variance analysis*), persetujuan *write-off*, dan valuasi aset persediaan.
-- **Super Admin (`Bambang Sugiarto`)**: Pengawasan sistem menyeluruh, konfigurasi data master, dan panduan demonstrasi.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-### 2. Dashboard Eksekutif & Operasional (`/dashboard`)
-- **4 Kartu KPI Utama**: Total SKU (32 Item), Total Valuasi Aset (Rp 337.696.500), Peringatan Stok Kritis (7 Alert), dan Pergerakan Bulanan.
-- **Grafik Tren Mutasi Mingguan**: Perbandingan visual tren barang masuk (*Inbound*) vs barang keluar (*Outbound*) berbasis Chart.js.
-- **Grafik Donat Kategori**: Sebaran komposisi persediaan (*Bahan Baku*, *Elektronik*, *Packaging*, *Safety Gear*, *Finish Goods*).
-- **Tabel Peringatan Stok Kritis**: Notifikasi otomatis item menipis dan tombol *Quick Reorder* interaktif.
-- **Visualisasi Kapasitas Multi-Gudang**: Persentase keterisian 3 fasilitas gudang logistik.
+## Learning Laravel
 
-### 3. Master Data Terpadu
-- **Katalog Barang & SKU (`/master/barang`)**: Pencarian *live search* instan, filter multi-dimensi per kategori & status stok, modal rincian spesifikasi teknis, serta formulir tambah/edit barang.
-- **Fasilitas Gudang & Zonasi Rak (`/master/lokasi`)**: Pemetaan 3 fasilitas (*Gudang Utama Cikarang*, *Gudang Transit Karawang*, *Gudang Retur QC*), visualisasi kapasitas terpakai, dan modal rincian rak/bin.
-- **Direktori Vendor & Supplier (`/master/supplier`)**: Direktori 5 pemasok resmi, rating kepatuhan, nomor kontak, dan modal profil vendor.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-### 4. Operasional Pergudangan
-- **Penerimaan Barang / Inbound (`/operasional/inbound`)**: Pencatatan kedatangan armada vendor, pemeriksaan surat jalan (DO), antrian inspeksi QC, penempatan ke rak staging, dan modal cetak **Surat Bukti Penerimaan Barang (Goods Receipt Slip)** siap cetak (`window.print()`).
-- **Pengeluaran & Transfer Stok / Outbound (`/operasional/outbound`)**:
-  - *Delivery Order (DO)*: Pengeluaran barang ke divisi produksi atau pelanggan eksternal dengan **validasi batas ketersediaan stok realtime**.
-  - *Transfer Antar Gudang*: Pemindahan stok multi-gudang (Gudang Utama &rarr; Transit Karawang &rarr; Retur) lengkap dengan alur persetujuan (*quick approve*).
-  - Modal cetak **Surat Jalan (DO)** dan **Transfer Order Slip**.
-- **Stock Opname & Penyesuaian Selisih (`/operasional/opname`)**:
-  - Penjadwalan audit fisik persediaan (*cycle count* atau *wall-to-wall*).
-  - Formulir *Stock Count Sheet* dengan **Kalkulator Selisih Realtime (Live Variance Calculator)** untuk menghitung selisih kuantitas dan dampak nilai rupiah secara langsung.
-  - Alur persetujuan selisih (*Stock Adjustment / Write-off Approval*).
-  - Modal cetak **Berita Acara Hasil Stock Opname (BAST)** resmi 4 tanda tangan.
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-### 5. Buku Besar & Laporan Analitik
-- **Kartu Stok Digital (`/laporan/kartu-stok`)**: Buku besar kronologis keluar-masuk barang per SKU dengan perhitungan saldo berjalan (*perpetual running balance*) dan pemilih SKU dinamis.
-- **Laporan Mutasi & Valuasi Persediaan (`/laporan/mutasi`)**: Rekapitulasi pergerakan kuantitas 32 SKU (*Saldo Awal*, *Inbound*, *Outbound*, *Adjustment*, *Saldo Akhir*) dan akumulasi nilai valuasi persediaan dinamis.
-- **Pengaturan & Panduan Demo (`/pengaturan`)**: Matriks otorisasi peran, panduan skenario demonstrasi 5 langkah, dan tombol reset dataset mock.
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
----
+## Agentic Development
 
-## 🛠️ Arsitektur & Tumpukan Teknologi
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
-- **Backend:** Laravel 13.42.0 (PHP 8.3.28)
-- **Frontend / UI Theme:** AdminLTE 4 (Bootstrap 5.3, Bootstrap Icons, Chart.js)
-- **Data Engine:** Centralized In-Memory Mock Store (`App\Support\MockDataStore`)
-- **Role Engine:** RBAC Permission Helper (`App\Support\RoleManager`)
-- **Notification:** Floating Toast Container (`window.showToast()`)
-- **Print Utility:** CSS Print Stylesheets & Modal Print Preview
+```bash
+composer require laravel/boost --dev
 
----
-
-## 🚀 Panduan Menjalankan Aplikasi
-
-### Opsi 1: Menjalankan via Laragon (Rekomendasi)
-Workspace telah dilengkapi dengan file `index.php` pada *root* direktori yang secara otomatis mem-forward request Laragon ke subfolder `inventory-prototipe/public`.
-1. Letakkan folder proyek di `C:\laragon\www\PORTO\inventory`.
-2. Buka browser dan akses URL:
-   ```
-   http://localhost/PORTO/inventory/
-   ```
-   Aplikasi akan otomatis mengarahkan ke dashboard utama.
-
-### Opsi 2: Menjalankan via PHP Artisan Serve
-Jalankan perintah berikut melalui terminal Laragon atau PowerShell:
-```powershell
-cd c:\laragon\www\PORTO\inventory\inventory-prototipe
-& "C:\laragon\bin\php\8.3.28\php.exe" artisan serve
+php artisan boost:install
 ```
-Akses melalui browser: `http://localhost:8000/dashboard`
 
----
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
-## 🧪 Hasil Verifikasi & Testing (100% Lolos)
+## Contributing
 
-Seluruh modul dan endpoint telah diverifikasi menggunakan pengujian terotomasi:
-- **13 Route HTTP:** 100% menghasilkan status `HTTP 200 OK`
-- **Role Switcher:** 100% menghasilkan `HTTP 302 Redirect` dan memperbarui konteks pengguna
-- **Komponen UI:** Seluruh modal, tabel interaktif, live calculator, dan dokumen cetak ter-render tanpa broken asset.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
----
+## Code of Conduct
 
-## 📄 Lisensi
-Prototipe ini dikembangkan untuk kebutuhan portofolio dan demonstrasi sistem inventaris logistik modern. Lisensi di bawah [MIT License](LICENSE).
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
